@@ -12,6 +12,7 @@ public enum ResizeType {
 	,RESIZE_NOT("resize_not")
 	,FOLDER_EXISTS("folder_exists")
 	,NO_FILE("no_file")
+	,ERROR("error")
 	;
 	
 	private File dir;

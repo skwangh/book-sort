@@ -40,15 +40,22 @@ public class BookFile {
 
 	@SneakyThrows
 	private ResizeType detectResizeType() {
+		ResizeType result = null;
+		
 		//clean
 		FileUtils.deleteDirectory(Constants.TEMP_DIR);
 		
-		//unzip
-		ZipFile zipFile = new ZipFile(file);
-		zipFile.extractAll(Constants.TEMP_DIR_PATH);
-		
-		//detect
-		ResizeType result = ResizeTypeDetector.detect(Constants.TEMP_DIR);
+		try {
+			//unzip
+			ZipFile zipFile = new ZipFile(file);
+			zipFile.extractAll(Constants.TEMP_DIR_PATH);
+			
+			//detect
+			result = ResizeTypeDetector.detect(Constants.TEMP_DIR);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = ResizeType.ERROR;
+		}
 		
 		//clean
 		FileUtils.deleteDirectory(Constants.TEMP_DIR);
