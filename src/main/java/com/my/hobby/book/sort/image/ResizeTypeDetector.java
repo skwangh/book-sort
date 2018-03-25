@@ -33,7 +33,7 @@ public class ResizeTypeDetector {
 		
 		if (averageFileSize < 600 * 1024) {
 			return ResizeType.DONE;
-		} else if (averageImageHeight <= 1920) {
+		} else if (averageImageHeight <= 2100) {
 			return ResizeType.RESIZE_NOT;
 		} else {
 			return ResizeType.RESIZE;
